@@ -114,3 +114,46 @@ kotlin {
     }
 
 }
+
+dependencies {
+    androidRuntimeClasspath(libs.compose.uiTooling)
+}
+
+mavenPublishing {
+    // 指向 Central Portal（不是旧的 OSSRH）
+    publishToMavenCentral()
+
+    // 自动签名所有 publication
+    signAllPublications()
+
+    coordinates(
+        groupId = "io.github.dxycw",
+        artifactId = "tyme",
+        version = "1.0.0" // 从 gradle.properties 或版本目录读取更佳
+    )
+
+    pom {
+        name.set("tyme")
+        description.set("一款强大的Kotlin多平台“tyme”日历工具库，适用于 Compose Multiplatform 的 Kotlin 多平台项目。Tyme是一个非常强大的日历工具库（可以看作 6tail的Tyme的升级版），拥有更优的设计和扩展性，支持公历、农历、藏历、回历、星座、干支、生肖、节气、月相、法定假日等。")
+        url.set("https://github.com/dxycw/tyme")
+
+        licenses {
+            license {
+                name.set("Apache-2.0")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0")
+            }
+        }
+        developers {
+            developer {
+                id.set("dxycw")
+                name.set("tyme")
+                email.set("3293666408@qq.com")
+            }
+        }
+        scm {
+            connection.set("scm:git:git://github.com/dxycw/tyme.git")
+            developerConnection.set("scm:git:ssh://github.com/dxycw/tyme.git")
+            url.set("https://github.com/dxycw/tyme")
+        }
+    }
+}
